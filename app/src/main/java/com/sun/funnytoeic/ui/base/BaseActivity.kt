@@ -10,8 +10,8 @@ import com.sun.funnytoeic.BR
 abstract class BaseActivity<ViewBinding : ViewDataBinding, ViewModel : BaseViewModel>
     : AppCompatActivity() {
 
-    lateinit var viewBinding: ViewBinding
-    abstract val viewModel: ViewModel
+    private lateinit var viewBinding: ViewBinding
+    protected abstract val viewModel: ViewModel
 
     @get:LayoutRes
     abstract val layoutId: Int
