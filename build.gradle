@@ -22,3 +22,8 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+ext {
+    koinVersion = "2.0.1"
+    lifecycleVersion = "2.0.0"
+}
