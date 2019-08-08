@@ -24,4 +24,8 @@ abstract class BaseActivity<ViewBinding : ViewDataBinding, ViewModel : BaseViewM
     }
 
     protected fun hideActionBar() = supportActionBar?.hide()
+
+    abstract fun initView()
+
+    abstract fun observeViewModel()
 }

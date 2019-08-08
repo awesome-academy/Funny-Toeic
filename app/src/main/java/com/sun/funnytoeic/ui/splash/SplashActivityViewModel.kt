@@ -3,24 +3,23 @@ package com.sun.funnytoeic.ui.splash
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.sun.funnytoeic.data.repository.impl.VocabularyRepositoryImpl
+import com.sun.funnytoeic.data.repository.VocabularyRepository
 import com.sun.funnytoeic.ui.base.BaseViewModel
-import com.sun.funnytoeic.utils.Constants.NUMBER_VOCABULARIES
-import com.sun.funnytoeic.utils.Constants.VALUE_100
 import kotlinx.coroutines.launch
 
 class SplashActivityViewModel(
-    private val repository: VocabularyRepositoryImpl
+    private val repository: VocabularyRepository
 ) : BaseViewModel() {
 
-    private val _loadingDataProgress = MutableLiveData<Int>()
-    val loadingDataProgress: LiveData<Int>
-        get() = _loadingDataProgress
+    private val _done = MutableLiveData<Boolean>()
+    val done: LiveData<Boolean>
+        get() = _done
 
     init {
+        _done.value = false
         viewModelScope.launch {
-            _loadingDataProgress.value =
-                repository.getNumberVocabularies() * VALUE_100 / NUMBER_VOCABULARIES
+            repository.getNumberVocabularies()
+            _done.value = true
         }
     }
 }
