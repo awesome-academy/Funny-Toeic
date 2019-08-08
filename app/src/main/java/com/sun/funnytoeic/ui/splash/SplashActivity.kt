@@ -14,5 +14,6 @@ class SplashActivity : BaseActivity<ActivitySplashBinding, SplashActivityViewMod
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
+        hideActionBar()
     }
 }
