@@ -12,4 +12,11 @@ interface VocabularyDao {
 
     @Update
     suspend fun update(vararg vocabularies: Vocabulary)
+
+    @Query("SELECT COUNT(*) FROM $TABLE_NAME")
+    suspend fun getNumberVocabularies(): Int
+
+    companion object {
+        private const val TABLE_NAME = Vocabulary.TABLE_NAME
+    }
 }
