@@ -32,7 +32,6 @@ jobs:
           destination: reports
       - store_test_results: # for display in Test Summary: https://circleci.com/docs/2.0/collect-test-data/
           path: app/build/test-results
-
       - run:
           name: Sending notification on fail
           when: on_fail
@@ -41,7 +40,7 @@ jobs:
               curl -X POST -H "X-ChatWorkToken: $CHATWORK_API_KEY" -d \
                 "body= $MEMBERS [info][title]Repository : $CIRCLE_PROJECT_REPONAME (problem)[/title]Your pull request is failed (pray)
               -> Click here for more detail: $CIRCLE_BUILD_URL
-              - Branch: $CIRCLE_BRANCH
+              - Branch: `curl -s https://api.github.com/repos/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}/pulls/${CIRCLE_PR_NUMBER} | jq -r '.head.ref'`
               - Pull request: $CIRCLE_PULL_REQUEST[/info]
                 "\
                 "https://api.chatwork.com/v2/rooms/$ROOM_ID/messages"
@@ -54,7 +53,7 @@ jobs:
               curl -X POST -H "X-ChatWorkToken: $CHATWORK_API_KEY" -d \
                 "body= $MEMBERS [info][title]Repository : $CIRCLE_PROJECT_REPONAME (ok2)[/title]Your pull request is successful (F)(F)(F)
               -> Click here for more detail: $CIRCLE_BUILD_URL
-              - Branch: $CIRCLE_BRANCH
+              - Branch: `curl -s https://api.github.com/repos/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}/pulls/${CIRCLE_PR_NUMBER} | jq -r '.head.ref'`
               - Pull request: $CIRCLE_PULL_REQUEST[/info]
                 "\
                 "https://api.chatwork.com/v2/rooms/$ROOM_ID/messages"
