@@ -1,6 +1,5 @@
 package com.sun.funnytoeic.ui.base
 
-import android.app.Activity
 import android.os.Bundle
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
@@ -21,6 +20,7 @@ abstract class BaseActivity<ViewBinding : ViewDataBinding, ViewModel : BaseViewM
         super.onCreate(savedInstanceState)
         viewBinding = DataBindingUtil.setContentView(this, layoutId)
         viewBinding.setVariable(BR.viewModel, viewModel)
+        viewBinding.lifecycleOwner = this
     }
 
     protected fun hideActionBar() = supportActionBar?.hide()
