@@ -19,9 +19,6 @@ class VocabularyRepositoryImpl(
 
     override suspend fun getRandomVocabulary() = vocabularyDao.selectRandomVocabulary()
 
-    override suspend fun learnVocabulary(vocabulary: Vocabulary?) {
-        vocabulary?.also {
-            vocabularyDao.update(it.apply { learned = true })
-        }
-    }
+    override suspend fun learnVocabulary(vocabulary: Vocabulary) =
+        vocabularyDao.update(vocabulary.apply { learned = true })
 }

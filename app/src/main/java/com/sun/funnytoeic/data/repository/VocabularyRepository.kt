@@ -8,5 +8,5 @@ interface VocabularyRepository {
     suspend fun getNumberLearnedVocabularies(): Int
     suspend fun getLearnedVocabularies(): List<Vocabulary>
     suspend fun getRandomVocabulary(): Vocabulary?
-    suspend fun learnVocabulary(vocabulary: Vocabulary?)
+    suspend fun learnVocabulary(vocabulary: Vocabulary)
 }
