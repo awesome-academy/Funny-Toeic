@@ -3,4 +3,7 @@
     <color name="color_primary">#232F3E</color>
     <color name="color_primary_dark">#000000</color>
     <color name="color_accent">#146EB4</color>
+    <color name="color_red_microsoft">#F25022</color>
+    <color name="color_green_microsoft">#7FBA00</color>
+    <color name="color_yellow_microsoft">#FFB900</color>
 </resources>
