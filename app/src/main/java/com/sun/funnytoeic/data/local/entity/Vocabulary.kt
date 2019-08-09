@@ -31,7 +31,7 @@ data class Vocabulary(
     val definition: String,
     @NonNull
     @ColumnInfo(name = FIELD_LEARNED)
-    val learned: Boolean = false
+    var learned: Boolean = false
 ) : Parcelable {
 
     constructor(jsonObject: JSONObject) : this(

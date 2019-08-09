@@ -7,11 +7,12 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import com.sun.funnytoeic.BR
 
-abstract class BaseActivity<ViewBinding : ViewDataBinding, ViewModel : BaseViewModel>
-    : AppCompatActivity() {
+abstract class BaseActivity<ViewBinding : ViewDataBinding, ViewModel : BaseViewModel, Args: BaseActivityArgs> :
+    AppCompatActivity() {
 
     private lateinit var viewBinding: ViewBinding
     protected abstract val viewModel: ViewModel
+    protected abstract val args: Args
 
     @get:LayoutRes
     abstract val layoutId: Int
