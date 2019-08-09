@@ -3,22 +3,35 @@ package com.sun.funnytoeic.ui.home
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.sun.funnytoeic.data.local.entity.Vocabulary
 import com.sun.funnytoeic.data.repository.VocabularyRepository
 import com.sun.funnytoeic.ui.base.BaseViewModel
+import com.sun.funnytoeic.utils.Constants.NONE_VOCABULARY
+import com.sun.funnytoeic.utils.Constants.NOT_ZERO_VALUE
+import com.sun.funnytoeic.utils.Constants.MAX_PERCENT
 import kotlinx.coroutines.launch
 
 class HomeActivityViewModel(
     private val repository: VocabularyRepository
 ) : BaseViewModel() {
 
-    private val _learnedVocabularies = MutableLiveData<List<Vocabulary>>()
-    val learnedVocabularies: LiveData<List<Vocabulary>>
-        get() = _learnedVocabularies
+    private val _numberVocabularies = MutableLiveData<Int>()
+    private val _numberLearnedVocabularies = MutableLiveData<Int>()
+    private val _currentLevel = MutableLiveData<Int>()
+    val currentLevel: LiveData<Int>
+        get() = _currentLevel
 
     init {
         viewModelScope.launch {
-            _learnedVocabularies.value = repository.getLearnedVocabularies()
+            _numberVocabularies.value = repository.getNumberVocabularies()
+            _numberLearnedVocabularies.value = repository.getNumberLearnedVocabularies()
+            _currentLevel.value = getLearnedPercent()
         }
     }
+
+    private fun getLearnedPercent(): Int {
+        val numberLearned = _numberLearnedVocabularies.value ?: NONE_VOCABULARY
+        val numberTotal = _numberVocabularies.value ?: NOT_ZERO_VALUE
+        return numberLearned * MAX_PERCENT / numberTotal
+    }
+
 }

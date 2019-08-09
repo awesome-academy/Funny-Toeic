@@ -19,6 +19,12 @@ abstract class BaseActivity<ViewBinding : ViewDataBinding, ViewModel : BaseViewM
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        initViewBinding()
+        initView()
+        observeViewModel()
+    }
+
+    private fun initViewBinding() {
         viewBinding = DataBindingUtil.setContentView(this, layoutId)
         viewBinding.setVariable(BR.viewModel, viewModel)
         viewBinding.lifecycleOwner = this

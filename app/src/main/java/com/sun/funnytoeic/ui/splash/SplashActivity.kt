@@ -1,13 +1,12 @@
 package com.sun.funnytoeic.ui.splash
 
-import android.os.Bundle
 import androidx.lifecycle.Observer
 import com.sun.funnytoeic.R
 import com.sun.funnytoeic.databinding.ActivitySplashBinding
 import com.sun.funnytoeic.ui.base.BaseActivity
 import com.sun.funnytoeic.ui.base.BaseActivityArgs
 import com.sun.funnytoeic.ui.home.HomeActivityArgs
-import com.sun.funnytoeic.utils.Constants.VALUE_100
+import com.sun.funnytoeic.utils.Constants.MAX_PERCENT
 import kotlinx.android.synthetic.main.activity_splash.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -17,12 +16,6 @@ class SplashActivity :
     override val viewModel: SplashActivityViewModel by viewModel()
     override val layoutId = R.layout.activity_splash
     override val args by lazyOf(SplashActivityArgs())
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        initView()
-        observeViewModel()
-    }
 
     override fun observeViewModel() = viewModel.run {
         done.observe(this@SplashActivity, Observer { done ->
@@ -35,7 +28,7 @@ class SplashActivity :
 
     override fun initView() {
         hideActionBar()
-        barLoadingData?.max = VALUE_100
+        barLoadingData?.max = MAX_PERCENT
     }
 
     // Start home activity
