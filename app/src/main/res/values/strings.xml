@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Funny Toeic</string>
+    <string name="label_store">Store</string>
+    <string name="label_vocabularies">Vocabs</string>
+    <string name="label_current_level">Current Level</string>
+    <string name="label_play">Click to Play !</string>
+    <string name="number_sample_level">96</string>
+    <string name="label_today_vocabularies">Today</string>
 </resources>

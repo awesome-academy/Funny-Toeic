@@ -6,7 +6,6 @@ import com.sun.funnytoeic.R
 import com.sun.funnytoeic.databinding.ActivitySplashBinding
 import com.sun.funnytoeic.ui.base.BaseActivity
 import com.sun.funnytoeic.ui.base.BaseActivityArgs
-import com.sun.funnytoeic.ui.home.HomeActivity
 import com.sun.funnytoeic.ui.home.HomeActivityArgs
 import com.sun.funnytoeic.utils.Constants.VALUE_100
 import kotlinx.android.synthetic.main.activity_splash.*

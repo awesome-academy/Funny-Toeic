@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout
         xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools">
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable name="viewModel"
                   type="com.sun.funnytoeic.ui.home.HomeActivityViewModel"/>
@@ -10,5 +11,112 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:context=".ui.home.HomeActivity">
+        <ImageView
+                android:id="@+id/imageStoreIcon"
+                android:src="@drawable/ic_store_black_24dp"
+                android:tint="@color/color_yellow_microsoft"
+                android:layout_width="@dimen/dp_64"
+                android:layout_height="@dimen/dp_64"
+                android:layout_margin="@dimen/dp_16"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:ignore="ContentDescription"/>
+        <TextView
+                android:id="@+id/textStoreLabel"
+                android:text="@string/label_store"
+                android:textColor="@color/color_primary"
+                android:textStyle="bold"
+                android:textSize="@dimen/sp_22"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@id/imageStoreIcon"
+                app:layout_constraintEnd_toEndOf="@id/imageStoreIcon"
+                app:layout_constraintTop_toBottomOf="@id/imageStoreIcon"/>
+        <ImageView
+                android:id="@+id/imageVocabulariesIcon"
+                android:src="@drawable/ic_style_black_24dp"
+                android:tint="@color/color_yellow_microsoft"
+                android:layout_width="@dimen/dp_64"
+                android:layout_height="@dimen/dp_64"
+                android:layout_margin="@dimen/dp_16"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:ignore="ContentDescription"/>
+        <TextView
+                android:id="@+id/textVocabulariesLabel"
+                android:text="@string/label_vocabularies"
+                android:textColor="@color/color_primary"
+                android:textStyle="bold"
+                android:textSize="@dimen/sp_22"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@id/imageVocabulariesIcon"
+                app:layout_constraintEnd_toEndOf="@id/imageVocabulariesIcon"
+                app:layout_constraintTop_toBottomOf="@id/imageVocabulariesIcon"/>
+        <TextView
+                android:id="@+id/textCurrentLevelLabel"
+                android:text="@string/label_current_level"
+                android:textColor="@color/color_primary"
+                android:textStyle="bold"
+                android:textSize="@dimen/sp_24"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="@id/textCurrentLevel"
+                app:layout_constraintStart_toStartOf="@id/textCurrentLevel"
+                app:layout_constraintEnd_toEndOf="@id/textCurrentLevel"/>
+        <TextView
+                android:id="@+id/textCurrentLevel"
+                tools:text="@string/number_sample_level"
+                android:textColor="@color/color_red_microsoft"
+                android:textStyle="bold"
+                android:textSize="@dimen/sp_192"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_32"
+                app:layout_constraintTop_toBottomOf="@id/textStoreLabel"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+        <TextView
+                android:id="@+id/textTodayVocabulariesLabel"
+                android:text="@string/label_today_vocabularies"
+                android:textColor="@color/color_primary"
+                android:textStyle="bold"
+                android:textSize="@dimen/sp_22"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_32"
+                app:layout_constraintTop_toBottomOf="@id/textCurrentLevel"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:ignore="RtlHardcoded"/>
+        <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/listTodayVocabularies"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="@id/textTodayVocabulariesLabel"
+                app:layout_constraintStart_toEndOf="@id/textTodayVocabulariesLabel"/>
+        <TextView
+                android:id="@+id/textPlayLabel"
+                android:text="@string/label_play"
+                android:textColor="@color/color_green_microsoft"
+                android:textSize="@dimen/sp_22"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginBottom="@dimen/dp_64"/>
+        <ImageView
+                android:id="@+id/imagePlayButton"
+                android:src="@drawable/ic_play_circle_filled_black_24dp"
+                android:tint="@color/color_green_microsoft"
+                android:layout_width="@dimen/dp_128"
+                android:layout_height="@dimen/dp_128"
+                android:paddingBottom="@dimen/dp_16"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/textPlayLabel"
+                tools:ignore="ContentDescription"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
