@@ -1,6 +1,5 @@
 package com.sun.funnytoeic.ui.home
 
-import android.os.Bundle
 import com.sun.funnytoeic.R
 import com.sun.funnytoeic.databinding.ActivityHomeBinding
 import com.sun.funnytoeic.ui.base.BaseActivity
@@ -11,11 +10,6 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeActivityViewModel, Ho
     override val viewModel: HomeActivityViewModel by viewModel()
     override val layoutId = R.layout.activity_home
     override val args by lazyOf(HomeActivityArgs())
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        hideActionBar()
-    }
 
     override fun initView() {
         hideActionBar()
