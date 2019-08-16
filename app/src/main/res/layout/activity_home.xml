@@ -66,7 +66,7 @@
                 app:layout_constraintEnd_toEndOf="@id/textCurrentLevel"/>
         <TextView
                 android:id="@+id/textCurrentLevel"
-                android:text="@{String.valueOf(viewModel.currentLevel)}"
+                android:text="@{String.valueOf(safeUnbox(viewModel.currentLevel))}"
                 android:textColor="@color/color_red_microsoft"
                 android:textStyle="bold"
                 android:textSize="@dimen/sp_192"

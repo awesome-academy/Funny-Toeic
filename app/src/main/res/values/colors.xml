@@ -6,4 +6,5 @@
     <color name="color_red_microsoft">#F25022</color>
     <color name="color_green_microsoft">#7FBA00</color>
     <color name="color_yellow_microsoft">#FFB900</color>
+    <color name="color_gray_microsoft">#737373</color>
 </resources>
