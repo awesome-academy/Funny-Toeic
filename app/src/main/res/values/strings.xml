@@ -5,5 +5,6 @@
     <string name="label_current_level">Current Level</string>
     <string name="label_play">Click to Play !</string>
     <string name="label_today_vocabularies">Today</string>
-    <string name="label_show_learned_word">Show learned word</string>
+    <string name="label_show_learned_words">Show learned words</string>
+    <string name="label_show_all_words">Show all words</string>
 </resources>
