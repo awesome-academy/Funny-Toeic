@@ -17,12 +17,14 @@ class VocabulariesActivityViewModel(
         get() = _vocabularies
 
     init {
-        reloadVocabularies()
+        loadVocabularies()
     }
 
-    private fun reloadVocabularies() {
-        viewModelScope.launch {
-            _vocabularies.value = repository.getVocabularies()
-        }
+    fun loadVocabularies() = viewModelScope.launch {
+        _vocabularies.value = repository.getVocabularies()
+    }
+
+    fun loadLearnedVocabularies() = viewModelScope.launch {
+        _vocabularies.value = repository.getLearnedVocabularies()
     }
 }

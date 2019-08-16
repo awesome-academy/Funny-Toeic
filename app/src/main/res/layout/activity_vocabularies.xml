@@ -27,7 +27,7 @@
                 tools:ignore="ContentDescription"/>
         <TextView
                 android:id="@+id/textLearned"
-                android:text="@string/label_show_learned_word"
+                android:text="@string/label_show_learned_words"
                 android:textStyle="bold"
                 android:textSize="@dimen/sp_20"
                 android:textAllCaps="true"
