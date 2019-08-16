@@ -5,4 +5,5 @@ object Constants {
     const val NONE_VOCABULARY = 0
     const val NOT_ZERO_VALUE = 1
     const val MAX_PERCENT = 100
+    const val HINT_IMAGE_CORNER_RADIUS = 32
 }

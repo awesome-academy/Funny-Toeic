@@ -15,6 +15,10 @@ abstract class UpdatableAdapter<T, VH : UpdatableAdapter.ViewHolder<T>>(
             dispatchUpdatesTo(this@UpdatableAdapter)
         }
 
+    override fun getItemCount() = items.size
+
+    override fun onBindViewHolder(holder: VH, position: Int) = holder.bindData(items[position])
+
     abstract class ViewHolder<T>(view: View) : RecyclerView.ViewHolder(view) {
         abstract fun bindData(item: T)
     }

@@ -32,4 +32,6 @@ ext {
     roomVersion = "2.1.0"
     coroutineVersion = "1.3.0-RC"
     materialVersion = "1.1.0-alpha09"
+    flexboxVersion = "1.1.0"
+    glideVersion = "4.9.0"
 }
