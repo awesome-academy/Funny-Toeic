@@ -18,9 +18,10 @@ class VocabulariesAdapter(
         LayoutInflater.from(parent.context).inflate(viewType, parent, false)
     )
 
-    override fun getItemViewType(position: Int) = when(vocabularies[position].learned) {
-        true -> R.layout.item_vocabulary_learned
-        false -> R.layout.item_vocabulary
+    override fun getItemViewType(position: Int) = if (vocabularies[position].learned) {
+        R.layout.item_vocabulary_learned
+    } else {
+        R.layout.item_vocabulary
     }
 
     class ViewHolder(view: View) : UpdatableAdapter.ViewHolder<Vocabulary>(view) {
@@ -29,8 +30,8 @@ class VocabulariesAdapter(
         private val textDefinition by lazyOf(view.textItemDefinition)
 
         override fun bindData(item: Vocabulary) {
-            textWord.text = item.word
-            textDefinition.text = item.definition
+            textWord?.text = item.word
+            textDefinition?.text = item.definition
         }
     }
 }

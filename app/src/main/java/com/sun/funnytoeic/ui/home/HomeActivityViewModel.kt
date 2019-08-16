@@ -5,9 +5,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.sun.funnytoeic.data.repository.VocabularyRepository
 import com.sun.funnytoeic.ui.base.BaseViewModel
+import com.sun.funnytoeic.utils.Constants.MAX_PERCENT
 import com.sun.funnytoeic.utils.Constants.NONE_VOCABULARY
 import com.sun.funnytoeic.utils.Constants.NOT_ZERO_VALUE
-import com.sun.funnytoeic.utils.Constants.MAX_PERCENT
 import kotlinx.coroutines.launch
 
 class HomeActivityViewModel(
@@ -33,5 +33,4 @@ class HomeActivityViewModel(
         val numberTotal = _numberVocabularies.value ?: NOT_ZERO_VALUE
         return numberLearned * MAX_PERCENT / numberTotal
     }
-
 }
