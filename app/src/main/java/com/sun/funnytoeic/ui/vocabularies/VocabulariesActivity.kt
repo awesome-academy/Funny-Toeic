@@ -6,17 +6,17 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.sun.funnytoeic.R
 import com.sun.funnytoeic.databinding.ActivityVocabulariesBinding
 import com.sun.funnytoeic.ui.base.BaseActivity
+import com.sun.funnytoeic.ui.home.HomeActivity
 import com.sun.funnytoeic.ui.home.HomeActivityArgs
 import kotlinx.android.synthetic.main.activity_vocabularies.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class VocabulariesActivity :
-    BaseActivity<ActivityVocabulariesBinding, VocabulariesActivityViewModel, VocabulariesActivityArgs>(),
+    BaseActivity<ActivityVocabulariesBinding, VocabulariesActivityViewModel>(),
     View.OnClickListener {
 
     override val viewModel: VocabulariesActivityViewModel by viewModel()
     override val layoutId = R.layout.activity_vocabularies
-    override val args by lazyOf(VocabulariesActivityArgs())
     private val adapter by lazyOf(VocabulariesAdapter(mutableListOf()))
     private var showingLearned = false
 
@@ -35,7 +35,7 @@ class VocabulariesActivity :
 
     override fun onClick(view: View?) {
         when (view) {
-            imageHomeButton -> startActivity(HomeActivityArgs().intent(this))
+            imageHomeButton -> HomeActivityArgs.instance().launch(this)
             textLearned -> changeShowingMode()
         }
     }
