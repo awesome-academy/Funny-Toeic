@@ -18,15 +18,9 @@ class VocabulariesAdapter(
         LayoutInflater.from(parent.context).inflate(viewType, parent, false)
     )
 
-    override fun getItemCount() = vocabularies.size
-
     override fun getItemViewType(position: Int) = when(vocabularies[position].learned) {
         true -> R.layout.item_vocabulary_learned
         false -> R.layout.item_vocabulary
-    }
-
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bindData(vocabularies[position])
     }
 
     class ViewHolder(view: View) : UpdatableAdapter.ViewHolder<Vocabulary>(view) {
