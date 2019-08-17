@@ -7,30 +7,30 @@
                   type="com.sun.funnytoeic.ui.splash.SplashActivityViewModel"/>
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:context=".ui.splash.SplashActivity">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.splash.SplashActivity">
         <ImageView
-                android:id="@+id/imageToeicLogo"
-                android:src="@drawable/ic_toeic_logo"
-                android:layout_width="@dimen/dp_256"
-                android:layout_height="@dimen/dp_256"
-                app:layout_constraintVertical_bias="0.4"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                tools:ignore="ContentDescription"/>
+            android:id="@+id/imageToeicLogo"
+            android:src="@drawable/ic_toeic_logo"
+            android:layout_width="@dimen/dp_256"
+            android:layout_height="@dimen/dp_256"
+            app:layout_constraintVertical_bias="0.4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:ignore="ContentDescription"/>
         <androidx.core.widget.ContentLoadingProgressBar
-                android:id="@+id/barLoadingData"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                style="?android:attr/progressBarStyleHorizontal"
-                android:layout_marginLeft="@dimen/dp_32"
-                android:layout_marginRight="@dimen/dp_32"
-                app:layout_constraintStart_toStartOf="@id/imageToeicLogo"
-                app:layout_constraintEnd_toEndOf="@id/imageToeicLogo"
-                app:layout_constraintTop_toBottomOf="@id/imageToeicLogo"/>
+            android:id="@+id/barLoadingData"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_marginLeft="@dimen/dp_32"
+            android:layout_marginRight="@dimen/dp_32"
+            app:layout_constraintStart_toStartOf="@id/imageToeicLogo"
+            app:layout_constraintEnd_toEndOf="@id/imageToeicLogo"
+            app:layout_constraintTop_toBottomOf="@id/imageToeicLogo"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
 

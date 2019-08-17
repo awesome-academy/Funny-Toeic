@@ -29,6 +29,10 @@ class VocabularyRepositoryImpl(
     override suspend fun learnVocabulary(vocabulary: Vocabulary) =
         vocabularyDao.update(vocabulary.apply { learned = true })
 
+    @Synchronized
+    override suspend fun forgetVocabulary(vocabulary: Vocabulary) =
+        vocabularyDao.update(vocabulary.apply { learned = false })
+
     override suspend fun getLocalHintImages(vocabulary: Vocabulary) =
         hintImageDao.getHintImages(vocabulary.id).take(NUMBER_HINT_IMAGES)
 

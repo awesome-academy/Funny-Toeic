@@ -7,4 +7,5 @@
     <string name="label_today_vocabularies">Today</string>
     <string name="label_show_learned_words">Show learned words</string>
     <string name="label_show_all_words">Show all words</string>
+    <string name="label_next">Next</string>
 </resources>

@@ -10,6 +10,7 @@ interface VocabularyRepository {
     suspend fun getLearnedVocabularies(): List<Vocabulary>
     suspend fun getRandomVocabulary(): Vocabulary?
     suspend fun learnVocabulary(vocabulary: Vocabulary)
+    suspend fun forgetVocabulary(vocabulary: Vocabulary)
     suspend fun getLocalHintImages(vocabulary: Vocabulary): List<HintImage>
     suspend fun getRemoteHintImages(vocabulary: Vocabulary): List<HintImage>
     suspend fun insertHintImages(hintImages: List<HintImage>)

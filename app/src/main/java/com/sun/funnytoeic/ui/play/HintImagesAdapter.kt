@@ -10,8 +10,9 @@ import com.sun.funnytoeic.utils.Constants
 import com.sun.funnytoeic.utils.setImageUrl
 import kotlinx.android.synthetic.main.item_hint_image.view.*
 
-class HintImagesAdapter(hintImages: MutableList<HintImage>) :
-    UpdatableAdapter<HintImage, HintImagesAdapter.ViewHolder>(hintImages) {
+class HintImagesAdapter(
+    hintImages: MutableList<HintImage>
+) : UpdatableAdapter<HintImage, HintImagesAdapter.ViewHolder>(hintImages) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ViewHolder(
         LayoutInflater.from(parent.context).inflate(R.layout.item_hint_image, parent, false)
