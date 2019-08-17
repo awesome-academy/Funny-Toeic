@@ -34,4 +34,5 @@ ext {
     materialVersion = "1.1.0-alpha09"
     flexboxVersion = "1.1.0"
     glideVersion = "4.9.0"
+    retrofitVersion = "2.6.0"
 }

@@ -3,6 +3,7 @@ package com.sun.funnytoeic.data.local.entity
 import android.os.Parcelable
 import androidx.annotation.NonNull
 import androidx.room.*
+import com.sun.funnytoeic.data.remote.response.BingImageDetail
 import com.sun.funnytoeic.utils.Constants.DEFAULT_FIELD_ID
 import kotlinx.android.parcel.Parcelize
 
@@ -30,6 +31,11 @@ data class HintImage(
     @ColumnInfo(name = FIELD_URL)
     val url: String
 ) : Parcelable {
+
+    constructor(imageDetail: BingImageDetail, vocabulary: Vocabulary) : this(
+        vocabularyId = vocabulary.id,
+        url = imageDetail.thumbnailUrl
+    )
 
     companion object {
         const val TABLE_NAME = "hint_images"
