@@ -1,5 +1,6 @@
 package com.sun.funnytoeic.ui.play
 
+import android.media.MediaPlayer
 import android.view.View
 import android.widget.TextView
 import androidx.lifecycle.Observer
@@ -10,6 +11,8 @@ import com.google.android.flexbox.JustifyContent.CENTER
 import com.sun.funnytoeic.R
 import com.sun.funnytoeic.databinding.ActivityPlayBinding
 import com.sun.funnytoeic.ui.base.BaseActivity
+import com.sun.funnytoeic.ui.home.HomeActivityArgs
+import com.sun.funnytoeic.ui.play.PlayResult.CORRECT
 import com.sun.funnytoeic.ui.play.PlayResult.UNCOMPLETED
 import com.sun.funnytoeic.utils.assignViews
 import com.sun.funnytoeic.utils.gone
@@ -38,7 +41,7 @@ class PlayActivity : BaseActivity<ActivityPlayBinding, PlayActivityViewModel>(),
             }
             adapter = selectedAnswerAdapter
         }
-        assignViews(buttonNext)
+        assignViews(buttonNext, imageHomeButton)
     }
 
     override fun observeViewModel() = viewModel.run {
@@ -46,10 +49,13 @@ class PlayActivity : BaseActivity<ActivityPlayBinding, PlayActivityViewModel>(),
             selectedAnswerAdapter.updateData(vocabulary.word.toShuffledMutableList())
         })
         result.observe(this@PlayActivity, Observer { result ->
-            if (result != UNCOMPLETED) showResult()
+            if (result != UNCOMPLETED) showResult(result)
         })
         hintImages.observe(this@PlayActivity, Observer { hintImages ->
             hintImagesAdapter.updateData(hintImages)
+        })
+        numberLearnedVocabularies.observe(this@PlayActivity, Observer {
+            updateTextCurrentLearned(it, numberVocabularies.value)
         })
     }
 
@@ -57,6 +63,7 @@ class PlayActivity : BaseActivity<ActivityPlayBinding, PlayActivityViewModel>(),
         when (view.id) {
             R.id.textSelectedCharacter -> onClickSelect(view as TextView)
             R.id.buttonNext -> PlayActivityArgs.instance().launch(this)
+            R.id.imageHomeButton -> HomeActivityArgs.instance().launch(this)
         }
     }
 
@@ -66,11 +73,21 @@ class PlayActivity : BaseActivity<ActivityPlayBinding, PlayActivityViewModel>(),
         viewModel.checkResult(textAnswer?.text.toString())
     }
 
-    private fun showResult() {
+    private fun showResult(result: PlayResult) {
+        startSoundResult(result)
         recyclerSelectChars?.gone()
         textTrueAnswer?.show()
         textDefinition?.show()
         buttonNext?.show()
+    }
+
+    private fun startSoundResult(result: PlayResult) {
+        val soundResourceId = if (result == CORRECT) R.raw.sound_correct else R.raw.sound_wrong
+        MediaPlayer.create(this, soundResourceId).start()
+    }
+
+    private fun updateTextCurrentLearned(learned: Int?, total: Int?) {
+        textCurrentLearned?.text = getString(R.string.label_current_learned).format(learned, total)
     }
 
     companion object {
