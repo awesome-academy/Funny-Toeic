@@ -4,17 +4,13 @@ import android.view.View
 import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
-import com.bumptech.glide.load.resource.bitmap.CenterInside
 import com.google.android.flexbox.FlexDirection.ROW
 import com.google.android.flexbox.FlexboxLayoutManager
-import com.google.android.flexbox.JustifyContent
 import com.google.android.flexbox.JustifyContent.CENTER
 import com.sun.funnytoeic.R
-import com.sun.funnytoeic.data.local.entity.HintImage
 import com.sun.funnytoeic.databinding.ActivityPlayBinding
 import com.sun.funnytoeic.ui.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_play.*
-import kotlinx.android.synthetic.main.item_answer_selected.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class PlayActivity : BaseActivity<ActivityPlayBinding, PlayActivityViewModel>(),
@@ -40,6 +36,9 @@ class PlayActivity : BaseActivity<ActivityPlayBinding, PlayActivityViewModel>(),
     override fun observeViewModel() = viewModel.run {
         vocabulary.observe(this@PlayActivity, Observer {
             selectedAnswerAdapter.updateData(it.word.toList())
+        })
+        hintImages.observe(this@PlayActivity, Observer {
+            hintImagesAdapter.updateData(it)
         })
     }
 

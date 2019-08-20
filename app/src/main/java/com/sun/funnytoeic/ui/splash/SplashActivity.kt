@@ -10,8 +10,7 @@ import com.sun.funnytoeic.utils.Constants.MAX_PERCENT
 import kotlinx.android.synthetic.main.activity_splash.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class SplashActivity :
-    BaseActivity<ActivitySplashBinding, SplashActivityViewModel>() {
+class SplashActivity : BaseActivity<ActivitySplashBinding, SplashActivityViewModel>() {
 
     override val viewModel: SplashActivityViewModel by viewModel()
     override val layoutId = R.layout.activity_splash
