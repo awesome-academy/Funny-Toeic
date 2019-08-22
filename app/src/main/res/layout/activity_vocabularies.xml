@@ -1,54 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        tools:context=".ui.vocabularies.VocabulariesActivity">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.vocabularies.VocabulariesActivity">
     <data>
         <variable name="viewModel"
                   type="com.sun.funnytoeic.ui.vocabularies.VocabulariesActivityViewModel"/>
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
         <ImageView
-                android:id="@+id/imageHomeButton"
-                android:src="@drawable/ic_home_black_24dp"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:tint="@color/color_yellow_microsoft"
-                android:background="@drawable/bg_rounded_corner"
-                app:layout_constraintDimensionRatio="1"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/textLearned"
-                app:layout_constraintBottom_toBottomOf="@id/textLearned"
-                android:layout_marginStart="@dimen/dp_8"
-                android:layout_marginLeft="@dimen/dp_8"
-                tools:ignore="ContentDescription"/>
+            android:id="@+id/imageHomeButton"
+            android:src="@drawable/ic_home_black_24dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:tint="@color/color_yellow_microsoft"
+            android:background="@drawable/bg_rounded_corner"
+            app:layout_constraintDimensionRatio="1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/textLearned"
+            app:layout_constraintBottom_toBottomOf="@id/textLearned"
+            android:layout_marginStart="@dimen/dp_8"
+            android:layout_marginLeft="@dimen/dp_8"
+            tools:ignore="ContentDescription"/>
         <TextView
-                android:id="@+id/textLearned"
-                android:text="@string/label_show_learned_words"
-                android:textStyle="bold"
-                android:textSize="@dimen/sp_20"
-                android:textAllCaps="true"
-                android:textColor="@color/design_default_color_background"
-                android:textAlignment="center"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/bg_rounded_corner_selected"
-                android:layout_margin="@dimen/dp_8"
-                android:padding="@dimen/dp_8"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/imageHomeButton"/>
+            android:id="@+id/textLearned"
+            android:text="@string/label_show_learned_words"
+            android:textStyle="bold"
+            android:textSize="@dimen/sp_20"
+            android:textAllCaps="true"
+            android:textColor="@color/design_default_color_background"
+            android:textAlignment="center"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_rounded_corner_selected"
+            android:layout_margin="@dimen/dp_8"
+            android:padding="@dimen/dp_8"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/imageHomeButton"/>
         <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerVocabularies"
-                tools:listitem="@layout/item_vocabulary"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp_8"
-                app:layout_constraintTop_toBottomOf="@id/textLearned"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>
+            android:id="@+id/recyclerVocabularies"
+            tools:listitem="@layout/item_vocabulary"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_8"
+            app:layout_constraintTop_toBottomOf="@id/textLearned"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -23,3 +23,16 @@ fun ImageView.setImageUrl(url: String, cornerRadius: Int = 0) = Glide.with(conte
     .apply { if (cornerRadius > 0) transform(CenterCrop(), RoundedCorners(cornerRadius)) }
     .placeholder(R.drawable.bg_rounded_corner)
     .into(this)
+
+fun View.OnClickListener.assignViews(vararg views: View) =
+    views.forEach { it.setOnClickListener(this) }
+
+fun View.gone() {
+    visibility = View.GONE
+}
+
+fun View.show() {
+    visibility = View.VISIBLE
+}
+
+fun String.toShuffledMutableList() = toMutableList().apply { shuffle() }

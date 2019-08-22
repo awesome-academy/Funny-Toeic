@@ -4,12 +4,17 @@ import android.view.View
 import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
-import com.google.android.flexbox.FlexDirection.ROW
+import com.google.android.flexbox.FlexDirection.ROW_REVERSE
 import com.google.android.flexbox.FlexboxLayoutManager
 import com.google.android.flexbox.JustifyContent.CENTER
 import com.sun.funnytoeic.R
 import com.sun.funnytoeic.databinding.ActivityPlayBinding
 import com.sun.funnytoeic.ui.base.BaseActivity
+import com.sun.funnytoeic.ui.play.PlayResult.UNCOMPLETED
+import com.sun.funnytoeic.utils.assignViews
+import com.sun.funnytoeic.utils.gone
+import com.sun.funnytoeic.utils.show
+import com.sun.funnytoeic.utils.toShuffledMutableList
 import kotlinx.android.synthetic.main.activity_play.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -28,30 +33,48 @@ class PlayActivity : BaseActivity<ActivityPlayBinding, PlayActivityViewModel>(),
             adapter = hintImagesAdapter
         }
         recyclerSelectChars?.run {
-            layoutManager = FlexboxLayoutManager(context, ROW).apply { justifyContent = CENTER }
+            layoutManager = FlexboxLayoutManager(this@PlayActivity, ROW_REVERSE).apply {
+                justifyContent = CENTER
+            }
             adapter = selectedAnswerAdapter
         }
+        assignViews(buttonNext)
     }
 
     override fun observeViewModel() = viewModel.run {
-        vocabulary.observe(this@PlayActivity, Observer {
-            selectedAnswerAdapter.updateData(it.word.toList())
+        vocabulary.observe(this@PlayActivity, Observer { vocabulary ->
+            selectedAnswerAdapter.updateData(vocabulary.word.toShuffledMutableList())
         })
-        hintImages.observe(this@PlayActivity, Observer {
-            hintImagesAdapter.updateData(it)
+        result.observe(this@PlayActivity, Observer { result ->
+            if (result != UNCOMPLETED) showResult()
+        })
+        hintImages.observe(this@PlayActivity, Observer { hintImages ->
+            hintImagesAdapter.updateData(hintImages)
         })
     }
 
     override fun onClick(view: View) {
         when (view.id) {
             R.id.textSelectedCharacter -> onClickSelect(view as TextView)
+            R.id.buttonNext -> PlayActivityArgs.instance().launch(this)
         }
     }
 
-    private fun onClickSelect(textView: TextView) {
+    private fun onClickSelect(textSelectedCharacter: TextView) {
+        textSelectedCharacter.gone()
+        textAnswer?.text = COMBINE_STRING.format(textAnswer?.text, textSelectedCharacter.text)
+        viewModel.checkResult(textAnswer?.text.toString())
+    }
+
+    private fun showResult() {
+        recyclerSelectChars?.gone()
+        textTrueAnswer?.show()
+        textDefinition?.show()
+        buttonNext?.show()
     }
 
     companion object {
         private const val HINT_IMAGES_SPAN = 2
+        private const val COMBINE_STRING = "%s%s"
     }
 }

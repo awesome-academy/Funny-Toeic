@@ -38,6 +38,49 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/recyclerHintImages"/>
+
+        <TextView
+            android:id="@+id/textTrueAnswer"
+            android:text="@{viewModel.vocabulary.word}"
+            android:textAllCaps="true"
+            android:textColor="@color/color_green_microsoft"
+            android:textSize="@dimen/sp_36"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:layout_width="0dp"
+            android:visibility="gone"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dp_16"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textAnswer"/>
+        <TextView
+            android:id="@+id/textDefinition"
+            android:text="@{viewModel.vocabulary.definition}"
+            android:textColor="@color/color_primary"
+            android:textSize="@dimen/sp_22"
+            android:textStyle="bold"
+            android:visibility="gone"
+            android:textAlignment="center"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dp_16"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textTrueAnswer"/>
+        <Button
+            android:id="@+id/buttonNext"
+            android:text="@string/label_next"
+            android:visibility="gone"
+            android:textSize="@dimen/sp_24"
+            android:textColor="@color/design_default_color_background"
+            android:background="@drawable/bg_rounded_corner_selected"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dp_16"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerSelectChars"
             android:orientation="horizontal"

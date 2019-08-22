@@ -17,10 +17,12 @@ class CharactersAdapter(
         onClickListener
     )
 
-    class ViewHolder(view: View, onClickListener: View.OnClickListener) :
-        UpdatableAdapter.ViewHolder<Char>(view) {
+    class ViewHolder(
+        view: View,
+        onClickListener: View.OnClickListener
+    ) : UpdatableAdapter.ViewHolder<Char>(view) {
 
-        private val textCharacter by lazyOf(view.textSelectedCharacter)
+        private val textCharacter = view.textSelectedCharacter
 
         init {
             textCharacter?.setOnClickListener(onClickListener)
