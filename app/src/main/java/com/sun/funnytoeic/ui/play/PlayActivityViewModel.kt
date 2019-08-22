@@ -20,17 +20,11 @@ class PlayActivityViewModel(private val repository: VocabularyRepository) : Base
     private val _numberVocabularies = MutableLiveData<Int>()
     private val _numberLearnedVocabularies = MutableLiveData<Int>()
 
-
-    val vocabulary: LiveData<Vocabulary>
-        get() = _vocabulary
-    val hintImages: LiveData<List<HintImage>>
-        get() = _hintImages
-    val result: LiveData<PlayResult>
-        get() = _result
-    val numberVocabularies: LiveData<Int>
-        get() = _numberVocabularies
-    val numberLearnedVocabularies: LiveData<Int>
-        get() = _numberLearnedVocabularies
+    val vocabulary: LiveData<Vocabulary> get() = _vocabulary
+    val hintImages: LiveData<List<HintImage>> get() = _hintImages
+    val result: LiveData<PlayResult> get() = _result
+    val numberVocabularies: LiveData<Int> get() = _numberVocabularies
+    val numberLearnedVocabularies: LiveData<Int> get() = _numberLearnedVocabularies
 
     init {
         viewModelScope.launch {
