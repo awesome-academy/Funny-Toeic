@@ -8,4 +8,6 @@
     <string name="label_show_learned_words">Show learned words</string>
     <string name="label_show_all_words">Show all words</string>
     <string name="label_next">Next</string>
+    <string name="label_current_learned">Learned: %d/%d</string>
+    <string name="label_current_learned_default">Learned 0/0</string>
 </resources>
