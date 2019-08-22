@@ -41,7 +41,7 @@ jobs:
                 "body= $MEMBERS [info][title]Repository : $CIRCLE_PROJECT_REPONAME (problem)[/title]Your pull request is failed (pray)
               -> Click here for more detail: $CIRCLE_BUILD_URL
               - Branch: `curl -s https://api.github.com/repos/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}/pulls/${CIRCLE_PR_NUMBER} | jq -r '.head.ref'`
-              - Pull request: $CIRCLE_PULL_REQUEST[/info]
+              - Pull request: (boiroi)[/info]
                 "\
                 "https://api.chatwork.com/v2/rooms/$ROOM_ID/messages"
             fi
