@@ -47,26 +47,29 @@ class PlayActivityViewModel(private val repository: VocabularyRepository) : Base
         }
     }
 
-    private suspend fun updateLearnVocabulary() {
-        _vocabulary.value?.let { vocab ->
-            _result.value?.let {
-                if (it == CORRECT) {
-                    repository.learnVocabulary(vocab)
-                } else if (it == WRONG && vocab.learned) {
-                    repository.forgetVocabulary(vocab)
-                }
+    private fun updateLearnVocabulary() = viewModelScope.launch {
+        when (result.value) {
+            CORRECT -> learnVocabulary()
+            WRONG -> forgetVocabulary()
+            else -> {
             }
         }
     }
 
+    private suspend fun learnVocabulary() =
+        vocabulary.value?.let { repository.learnVocabulary(it) }
+
+    private suspend fun forgetVocabulary() =
+        vocabulary.value?.let { if (it.learned) repository.forgetVocabulary(it) }
+
     fun checkResult(answer: String?) {
-        answer?.let { ans ->
-            _vocabulary.value?.word?.also { word ->
-                if (ans.length == word.length) {
-                    _result.value = if (ans == word) CORRECT else WRONG
-                    viewModelScope.launch { updateLearnVocabulary() }
-                }
-            }
+        if (checkAnswerLength(answer)) {
+            _result.value = if (vocabulary.value?.word == answer) CORRECT else WRONG
+            updateLearnVocabulary()
         }
     }
+
+    private fun getWordLength() = vocabulary.value?.run { word.length } ?: 0
+
+    private fun checkAnswerLength(answer: String?) = answer?.length == getWordLength()
 }
