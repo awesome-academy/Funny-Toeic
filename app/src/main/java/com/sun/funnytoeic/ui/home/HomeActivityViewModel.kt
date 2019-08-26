@@ -17,20 +17,21 @@ class HomeActivityViewModel(
     private val _numberVocabularies = MutableLiveData<Int>()
     private val _numberLearnedVocabularies = MutableLiveData<Int>()
     private val _currentLevel = MutableLiveData<Int>()
-    val currentLevel: LiveData<Int>
-        get() = _currentLevel
+    private val learnedPercent: Int
+        get() {
+            val numberLearned = _numberLearnedVocabularies.value ?: NONE_VOCABULARY
+            val numberTotal = _numberVocabularies.value ?: NOT_ZERO_VALUE
+            return numberLearned * MAX_PERCENT / numberTotal
+        }
+
+    val currentLevel: LiveData<Int> get() = _currentLevel
+
 
     init {
         viewModelScope.launch {
             _numberVocabularies.value = repository.getNumberVocabularies()
             _numberLearnedVocabularies.value = repository.getNumberLearnedVocabularies()
-            _currentLevel.value = getLearnedPercent()
+            _currentLevel.value = learnedPercent
         }
-    }
-
-    private fun getLearnedPercent(): Int {
-        val numberLearned = _numberLearnedVocabularies.value ?: NONE_VOCABULARY
-        val numberTotal = _numberVocabularies.value ?: NOT_ZERO_VALUE
-        return numberLearned * MAX_PERCENT / numberTotal
     }
 }

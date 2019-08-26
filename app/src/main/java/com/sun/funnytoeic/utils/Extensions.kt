@@ -24,8 +24,8 @@ fun ImageView.setImageUrl(url: String, cornerRadius: Int = 0) = Glide.with(conte
     .placeholder(R.drawable.bg_rounded_corner)
     .into(this)
 
-fun View.OnClickListener.assignViews(vararg views: View) =
-    views.forEach { it.setOnClickListener(this) }
+fun View.OnClickListener.assignViews(vararg views: View?) =
+    views.forEach { it?.setOnClickListener(this) }
 
 fun View.gone() {
     visibility = View.GONE

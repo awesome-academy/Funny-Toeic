@@ -12,8 +12,7 @@ class SplashActivityViewModel(
 ) : BaseViewModel() {
 
     private val _done = MutableLiveData<Boolean>()
-    val done: LiveData<Boolean>
-        get() = _done
+    val done: LiveData<Boolean> get() = _done
 
     init {
         _done.value = false
